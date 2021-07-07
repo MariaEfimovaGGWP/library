@@ -1,0 +1,27 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.wrapper {
+    margin-bottom: 100px;
+}
+
+.content {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+
+    #catalog {
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
