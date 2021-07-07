@@ -20,7 +20,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/book/create">Add new book</a>
                                 </li>
-                            </ul>
+                            </ul>s
                         </div>
                     </div>
                 </header>

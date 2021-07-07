@@ -4,18 +4,26 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddNewBookRequest extends FormRequest
+class EditBookRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
     public function authorize()
     {
         return true;
-        // return auth()->check();
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules()
     {
         return [
-            'img' => 'required',
             'book_name' => 'required|max:255',
             'author_id' => 'required|max:255',
             'description' => 'required|max:2000',

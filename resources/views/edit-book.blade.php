@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="{{ URL::asset('css/normalize.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
         <script src="{{ URL::asset('js/app.js') }}"></script>
-        <title>Add New book</title>
+        <title>Edit book</title>
     </head>
     <body class="add-new-book-page">
         <div class="wrapper">
@@ -26,21 +26,17 @@
                     </div>
                 </header>
                 <section class="page-wrapper">
-                    <form method="POST" action="/book" name="addNewBookForm" enctype="multipart/form-data">
+                    <form method="POST" action="../{{$book->id}}" name="EditBookForm" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="_method" value="PUT">
 
                         <div class="form-input form-group">
-                            <label for="book_cover">Загрузите обложку для книги:</label>
-                            <input class="form-control" type="file" name="img" id="book_cover" class="{{ $errors->has('img') ? 'is-invalid' : '' }}" value="{{ old('img', isset($offer) ? $offer->img : '') }}">
+                            <label for="book_name">Название</label>
+                            <input value="{{ $book->book_name}}" class="form-control"  type="text" name="book_name" id="book_name" class="{{ $errors->has('book_name') ? 'is-invalid' : '' }}" value="{{ old('book_name', isset($offer) ? $offer->book_name : '') }}">
                         </div>
 
                         <div class="form-input form-group">
-                            <label for="book_name">Введите название</label>
-                            <input  class="form-control"  type="text" name="book_name" id="book_name" class="{{ $errors->has('book_name') ? 'is-invalid' : '' }}" value="{{ old('book_name', isset($offer) ? $offer->book_name : '') }}">
-                        </div>
-
-                        <div class="form-input form-group">
-                            <label for="author_id">Введите автора</label>
+                            <label for="author_id">Автор</label>
                             <select class="form-control" type="text" name="author_id" id="author_id" class="{{ $errors->has('author_id') ? 'is-invalid' : '' }}" value="{{ old('author_id', isset($offer) ? $offer->author_id : '') }}">
                                 @foreach ($authors as $author)
                                 <option value="{{  $author->id }}">{{  $author->name }}</option>
@@ -49,8 +45,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Добавьте описание книги</label>
-                            <textarea class="form-control" name="description" id="description" rows="3" class="{{ $errors->has('description') ? 'is-invalid' : '' }}" value="{{ old('description', isset($offer) ? $offer->description : '') }}"></textarea>
+                            <label for="description">Описание</label>
+                            <textarea class="form-control" name="description" id="description" rows="3" class="{{ $errors->has('description') ? 'is-invalid' : '' }}" value="{{ old('description', isset($offer) ? $offer->description : '') }}">{{ $book->description }}</textarea>
                         </div>
 
                         <!-- <div class="form-input form-group">
