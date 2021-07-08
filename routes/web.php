@@ -1,17 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\BookController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,3 +14,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('/', [CatalogController::class, 'index']);
+Route::get('/catalog', [CatalogController::class, 'index']);
+Route::get('/book/create', [BookController::class, 'create']);
+Route::get('/book/{id}', [BookController::class, 'show']);
+
+Route::post('/book', [BookController::class, 'store']);
+
+Route::put('/book/{id}/edit', [BookController::class, 'edit']);
