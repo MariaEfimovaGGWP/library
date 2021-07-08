@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------

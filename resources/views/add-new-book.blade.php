@@ -26,7 +26,7 @@
                     </div>
                 </header>
                 <section class="page-wrapper">
-                    <form method="POST" action="/book" name="addNewBookForm" enctype="multipart/form-data">
+                    <form method="POST" class="add-new-book-form" action="/book" name="addNewBookForm" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-input form-group">

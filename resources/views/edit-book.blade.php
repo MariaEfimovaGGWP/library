@@ -8,7 +8,7 @@
         <script src="{{ URL::asset('js/app.js') }}"></script>
         <title>Edit book</title>
     </head>
-    <body class="add-new-book-page">
+    <body class="edit-book-page">
         <div class="wrapper">
             <main clas="content">
                 <header>
@@ -26,7 +26,7 @@
                     </div>
                 </header>
                 <section class="page-wrapper">
-                    <form method="POST" action="../{{$book->id}}" name="EditBookForm" enctype="multipart/form-data">
+                    <form method="POST" action="../{{$book->id}}" class="edit-book-form" name="EditBookForm" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="_method" value="PUT">
 
