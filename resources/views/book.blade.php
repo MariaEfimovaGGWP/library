@@ -1,31 +1,15 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="{{ URL::asset('css/normalize.css') }}">
-        <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
-        <script src="{{ URL::asset('js/app.js') }}"></script>
-        <title>{{ $book->book_name }}</title>
-    </head>
-    <body class="book-page">
-        <div class="wrapper">
-            <main clas="content">
-                <header>
-                    <div class="navbar navbar-expand-lg navbar-light bg-white">
-                        <div class="collapse navbar-collapse">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/catalog">Catalog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/book/create">Add new book</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </header>
-                <section class="page-wrapper">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ $book->book_name }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+
                     <section class="main-info">
                         <div class="image-wrap"><img src="/storage/{{ $book->img }}" alt="{{ $book->book_name }}"></div>
                         <div class="book-info">
@@ -44,18 +28,18 @@
                             <a href="/book/{{ $book->id }}/edit">
                                 <button type="button" class="btn btn-dark">Хочу исправить эту</button>
                             </a>
+
+
+                            <form method="POST" action="{{ route('reader.store')}}">
+                                @csrf
+                                <x-input class="invisible" type="text" name="user_id" value="{{ auth()->user()->id }}"/>
+                                <x-input class="invisible" type="text" name="book_id" value="{{ $book->id }}"/>
+                                <x-button class="ml-3">Читать</x-button>
+                            </form>
                         </div>
                     </section>
-                </section>
-                <footer>
-                    <div class="footer-content">
-                        <h2>
-                            A room without books is like a body without a soul.
-                        </h2>
-                    </div>
-                </footer>
-                <script src="{{ URL::asset('js/app.js') }}"></script>
-            </main>
+                </div>
+            </div>
         </div>
-    </body>
-</html>
+    </div>
+</x-app-layout>

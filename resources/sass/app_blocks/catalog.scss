@@ -1,41 +1,38 @@
-.catalog-page {
-    .page-wrapper {
-        flex-wrap: wrap;
-        flex-direction: row;
-        align-content: space-around;
-        justify-content: space-around;
-        align-items: stretch;
+.page-wrapper {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: stretch;
 
 
-        .book-card {
-            max-width: 380px;
-            margin: 20px 10px;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            align-content: flex-start;
-            justify-content: flex-start;
-            align-items: center;
+    .book-card {
+        max-width: 380px;
+        margin: 20px 10px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px 6px rgb(0 0 0 / 50%);
+
+        &.add-new-book {
+            width: 100%;
+        }
+
+        img {
+            width: 250px;
+        }
+
+        .summary {
             padding: 10px;
-            border-radius: 20px;
-            box-shadow: 0px 0px 20px 6px rgb(0 0 0 / 50%);
-
-            &.add-new-book {
-                width: 100%;
-            }
-
-            img {
-                width: 250px;
-            }
-
-            .summary {
-                padding: 10px;
-                display: inline-block;
-                width: 340px;
-            }
+            display: inline-block;
+            width: 340px;
         }
     }
-
-    .more {display: none;}
-
 }
+
+.more {display: none;}

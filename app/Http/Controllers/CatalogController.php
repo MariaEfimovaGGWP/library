@@ -11,8 +11,7 @@ class CatalogController extends Controller
     public function index()
     {
         $books = Book::with('author')->get();
-
-        return view('/welcome', ['allBooks' => $books]);
+        return view('catalog', ['allBooks' => $books]);
     }
 
     /**

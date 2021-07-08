@@ -1,43 +1,49 @@
-.book-page {
-    .main-info {
+
+.main-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .image-wrap img {
+        width: 300px;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .book-info {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
         align-content: space-between;
         justify-content: space-between;
-        align-items: flex-start;
+        position: relative;
+        padding: 40px 0;
+    }
 
-        .image-wrap img {
-            width: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .image-wrap {
+        width: 40%;
+    }
 
-        .book-info {
-            width: 60%;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            align-content: space-between;
-            justify-content: space-between;
-            position: relative;
-        }
+    .btn-secondary {
+        position: absolute;
+        bottom: -40px;
+        left: 0;
+    }
 
-        .image-wrap {
-            width: 40%;
-        }
+    .btn-dark {
+        position: absolute;
+        bottom: -40px;
+        right: 0;
+    }
 
-        .btn-secondary {
-            position: absolute;
-            bottom: -40px;
-            left: 0;
-        }
-
-        .btn-dark {
-            position: absolute;
-            bottom: -40px;
-            right: 0;
-        }
+    .btn-success {
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }
