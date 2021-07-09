@@ -30,6 +30,7 @@
                                 <button type="button" class="btn btn-dark">Хочу исправить эту</button>
                             </a>
 
+                            @if (Auth::check())
                                 @if ($is_it_reader)
                                     <div class="readers-status">
                                         <p>Читаю</p>
@@ -48,6 +49,7 @@
                                         <button type="submit" class="btn btn-success">Читать</button>
                                     </form>
                                 @endif
+                            @endif
                         </div>
                     </section>
                 </div>

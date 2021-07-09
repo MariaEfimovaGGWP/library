@@ -25,6 +25,7 @@
             </div>
 
             <!-- Settings Dropdown -->
+            @if (Auth::check())
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -67,6 +68,8 @@
                     </svg>
                 </button>
             </div>
+            @endif
+
         </div>
     </div>
 
@@ -78,6 +81,7 @@
             </x-responsive-nav-link>
         </div>
 
+        @if (Auth::check())
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
@@ -101,5 +105,7 @@
                 </form>
             </div>
         </div>
+        @endif
+
     </div>
 </nav>
