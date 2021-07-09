@@ -1,11 +1,7 @@
-.add-new-book-page {
-    .main-info {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-content: space-between;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
+.add-new-book-form {
+    width: 600px;
 
+    .form-group {
+        padding: 10px 0;
+    }
 }

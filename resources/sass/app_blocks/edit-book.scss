@@ -1,0 +1,18 @@
+.edit-book-form {
+    width: 600px;
+
+    .form-group {
+        padding: 10px 0;
+    }
+
+}
+.delete-book-form {
+    margin: 20px 0;
+    position: relative;
+
+    .btn-danger {
+        position: absolute;
+        top: -60px;
+        right: 0;
+    }
+}

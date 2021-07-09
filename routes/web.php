@@ -22,22 +22,22 @@ Route::group(['middleware' => 'auth'], function() {
     })->name('dashboard');
 
     Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
-
     Route::get('/book/{id}/edit', [BookController::class, 'edit']);
     Route::get('/book/{id}', [BookController::class, 'show']);
     Route::get('/book', [BookController::class, 'create']);
+    Route::post('/book', [BookController::class, 'store']);
+    Route::put('/book/{id}', [BookController::class, 'update']);
+    Route::delete('/book/{id}', [BookController::class, 'destroy'])->name('book.destroy');
 
     Route::view('profile', 'profile')->name('profile');
     Route::put('profile',  [ProfileController::class, 'update'])->name('profile.update');
 
     Route::resource('catalog', 'App\Http\Controllers\CatalogController');
 
-    Route::post('/book', [BookController::class, 'store']);
+    Route::delete('/reader/{id}', [ReaderController::class, 'destroy'])->name('reader.destroy');
     Route::post('/reader', [ReaderController::class, 'store'])->name('reader.store');
 
-    Route::put('/book/{id}', [BookController::class, 'update']);
 });
 
 
 require __DIR__.'/auth.php';
-

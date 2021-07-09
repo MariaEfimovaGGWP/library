@@ -31,13 +31,13 @@
 
     .btn-secondary {
         position: absolute;
-        bottom: -40px;
+        bottom: 0px;
         left: 0;
     }
 
     .btn-dark {
         position: absolute;
-        bottom: -40px;
+        bottom: 0px;
         right: 0;
     }
 
@@ -45,5 +45,18 @@
         position: absolute;
         top: 0;
         right: 0;
+    }
+
+    .btn-info {
+        position: absolute;
+        top: 40px;
+        right: 0;
+    }
+
+    .readers-status {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #6c757d;
     }
 }

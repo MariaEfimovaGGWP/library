@@ -22,6 +22,7 @@
                                     @endif
                                 @endforeach
                             </p>
+
                             <a href="/book/create">
                                 <button type="button" class="btn btn-secondary">Знаю книгу получше</button>
                             </a>
@@ -29,13 +30,24 @@
                                 <button type="button" class="btn btn-dark">Хочу исправить эту</button>
                             </a>
 
-
-                            <form method="POST" action="{{ route('reader.store')}}">
-                                @csrf
-                                <x-input class="invisible" type="text" name="user_id" value="{{ auth()->user()->id }}"/>
-                                <x-input class="invisible" type="text" name="book_id" value="{{ $book->id }}"/>
-                                <x-button class="ml-3">Читать</x-button>
-                            </form>
+                                @if ($is_it_reader)
+                                    <div class="readers-status">
+                                        <p>Читаю</p>
+                                    </div>
+                                    <form method="POST" action="../reader/{{$book->id}}">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <x-input class="invisible" type="text" name="id" value="{{ $book->id }}"/>
+                                        <button type="submit" class="btn btn-info">Перестать читать</button>
+                                    </form>
+                                @else
+                                    <form method="POST" action="{{ route('reader.store')}}">
+                                        @csrf
+                                        <x-input class="invisible" type="text" name="user_id" value="{{ auth()->user()->id }}"/>
+                                        <x-input class="invisible" type="text" name="book_id" value="{{ $book->id }}"/>
+                                        <button type="submit" class="btn btn-success">Читать</button>
+                                    </form>
+                                @endif
                         </div>
                     </section>
                 </div>
