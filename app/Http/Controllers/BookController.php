@@ -43,8 +43,7 @@ class BookController extends Controller
             $validated
         );
 
-        $books = Book::with('author')->get();
-        return view('/catalog', ['allBooks' => $books]);
+        return redirect()->to('catalog');
     }
 
     public function show($id)
@@ -52,10 +51,12 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
 
         $user_id = Auth::id();
+
         $is_it_reader = false;
         if (Reader::where('book_id', '=', $id)->where('user_id', '=', $user_id)->exists()) {
             $is_it_reader = true;
         };
+
         return view('/book', ['book' => $book, 'is_it_reader' => $is_it_reader, 'user_id' => $user_id]);
     }
 
@@ -64,7 +65,6 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         $authors = Author::all();
         return view('/edit-book', ['book' => Book::findOrFail($id), 'authors' => $authors]);
-
     }
 
     public function update(EditBookRequest $request, $id)
@@ -82,15 +82,14 @@ class BookController extends Controller
 
         $book->update($validated);
 
-        $books = Book::with('author')->get();
-        return view('/catalog', ['allBooks' => $books]);
+        return redirect()->to('catalog');
     }
 
     public function destroy($book_id)
     {
+        Reader::where(['book_id'=>$book_id])->delete();
         Book::where(['id'=>$book_id])->delete();
 
-        $books = Book::with('author')->get();
-        return view('/catalog', ['allBooks' => $books]);
+        return redirect()->to('catalog');
     }
 }

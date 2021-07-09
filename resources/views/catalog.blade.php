@@ -37,7 +37,7 @@
                         <div class="book-card add-new-book">
                             <a href="{{ config('app.url')}}/book/create">Добавь книгу, которой здесь нет</a>
                             <div>
-                                <img src="storage/img/empty-book.jpg" alt="Add your best book">
+                                <img src="/storage/img/empty-book.jpg" alt="Add your best book">
                             </div>
                         </div>
                     </section>
