@@ -13,11 +13,8 @@ Route::group(['middleware' => 'auth'], function() {
         return view('dashboard');
     })->name('dashboard');
 
-
-
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/catalog', [CatalogController::class, 'index']);
+Route::get('/', [CatalogController::class, 'index']);
 
     Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
     Route::get('/book/{id}/edit', [BookController::class, 'edit']);
@@ -35,9 +32,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/reader', [ReaderController::class, 'store'])->name('reader.store');
 });
 
-Route::get('/catalog', function () {
-    return view('catalog');
-})->name('catalog');
+Route::get('/catalog', [CatalogController::class, 'index']);
+Route::get('/', [CatalogController::class, 'index']);
 
 Route::resource('catalog', 'App\Http\Controllers\CatalogController');
 Route::get('/book/{id}', [BookController::class, 'show']);

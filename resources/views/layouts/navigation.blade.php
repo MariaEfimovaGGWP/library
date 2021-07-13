@@ -5,22 +5,26 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('catalog.index') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @if (Auth::check())
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-nav-link>
+                    @endif
                     <x-nav-link :href="route('catalog.index')" :active="request()->routeIs('catalog.index')">
                         {{ __('Catalog') }}
                     </x-nav-link>
+                    @if (Auth::check())
                     <x-nav-link :href="route('book.create')" :active="request()->routeIs('book.create')">
                         {{ __('Add new book') }}
                     </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -68,6 +72,14 @@
                     </svg>
                 </button>
             </div>
+            @else
+            <div class="pt-4 pb-1 border-t border-gray-200">
+                <div class="px-4">
+                    <div class="font-medium text-base text-gray-800">
+                        <a class="no-underline text-sm text-gray-600 hover:text-gray-900" href="register">Register</a>
+                    </div>
+                </div>
+            </div>
             @endif
 
         </div>
@@ -77,8 +89,16 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Home') }}
             </x-responsive-nav-link>
+            <x-nav-link :href="route('catalog.index')" :active="request()->routeIs('catalog.index')">
+                {{ __('Catalog') }}
+            </x-nav-link>
+            @if (Auth::check())
+            <x-nav-link :href="route('book.create')" :active="request()->routeIs('book.create')">
+                {{ __('Add new book') }}
+            </x-nav-link>
+            @endif
         </div>
 
         @if (Auth::check())
@@ -103,6 +123,14 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+            </div>
+        </div>
+        @else
+        <div class="pt-4 pb-1 border-t border-gray-200">
+            <div class="px-4">
+                <div class="font-medium text-base text-gray-800">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="register">Register</a>
+                </div>
             </div>
         </div>
         @endif
