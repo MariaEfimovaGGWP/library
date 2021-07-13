@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 use \App\Models\Book;
 use \App\Models\Author;
 use \App\Models\Reader;
+use \App\Models\User;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 use App\Http\Requests\AddNewBookRequest;
 use App\Http\Requests\EditBookRequest;

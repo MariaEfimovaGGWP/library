@@ -13,9 +13,6 @@ Route::group(['middleware' => 'auth'], function() {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/catalog', [CatalogController::class, 'index']);
-Route::get('/', [CatalogController::class, 'index']);
-
     Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
     Route::get('/book/{id}/edit', [BookController::class, 'edit']);
 
@@ -26,7 +23,6 @@ Route::get('/', [CatalogController::class, 'index']);
 
     Route::view('profile', 'profile')->name('profile');
     Route::put('profile',  [ProfileController::class, 'update'])->name('profile.update');
-
 
     Route::delete('/reader/{id}', [ReaderController::class, 'destroy'])->name('reader.destroy');
     Route::post('/reader', [ReaderController::class, 'store'])->name('reader.store');
